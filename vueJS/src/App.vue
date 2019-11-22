@@ -11,4 +11,8 @@ export default {
 </script>
 
 <style>
+    @import './assets/css/base.css';
+    @import './assets/css/public.scss';
+    @import './assets/css/ui.scss';
+    @import './assets/css/flex.css';
 </style>

@@ -1,0 +1,29 @@
+/*
+* @Author: 曾宪林 877529974@qq.com
+* @Date:   2019-04-09 19:41:31
+* @Last Modified by:   曾宪林
+* @Last Modified time: 2019-04-16 17:08:45
+*/
+
+.module-title{
+    padding-top: 10px;
+    font-size: 16px;
+
+    &:before{
+        content: '';
+        padding-left: 6px;
+        border-left: 4px solid #FF852B; 
+    }
+}
+
+.module-dialog{
+    .el-dialog__header{
+        &:before{
+            content: '';
+            padding-left: 6px;
+            border-left: 4px solid #FF852B; 
+        }
+    }
+}
+
+
