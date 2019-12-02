@@ -1,6 +1,6 @@
 const validator = require('validator')
 class checkValidator {
-    checkUserName (data) {  //检验用户名
+    checkUserName (data) {  //检验用户名 
          if (!validator.isNumeric(data.userName)) {
             return '请输入纯数字字符串' 
          } else {
@@ -24,26 +24,37 @@ class checkValidator {
             return '请输入正确的电话号码'
         }
     };
+    checkPassWord (data) { //检验密码
+        let numChar = new RegExp('^[0-9A-Za-z]+$');
+        let numOther = new RegExp('^[0-9~!@#$%^&*]+$');
+        let charOther = new RegExp('^[A-Za-z~!@#$%^&*]+$');
+        if (data.passWord.length < 8) {
+            return '密码不能少于八个字符'
+        } else {
+            if (data.passWord.match(numChar) != null || data.passWord.match(numOther) != null || data.passWord.match(charOther) != null) {
+                return '密码必须包含字母数字以及特殊字符'
+            }
+        }
+    }
 }
 class checkUserInfo {
     aa (data) {
        let check = new checkValidator()
        let msg = []
        if (check.checkUserName (data) != undefined) {
-           console.log(1111111111111)
            msg.push(check.checkUserName (data))  
        }
        if (check.checkName (data) != undefined) {
-           console.log(22222222222)
            msg.push(check.checkName (data))
        }
        if (check.checkEmail (data) != undefined) {
-           console.log(3333333)
            msg.push(check.checkEmail (data))
        }
        if (check.checkPhoneNumber (data) != undefined) {
-           console.log(44444444)
            msg.push(check.checkPhoneNumber (data)) 
+       }
+       if (check.checkPassWord (data) != undefined) {
+           msg.push(check.checkPassWord (data))
        }
        return msg
     }

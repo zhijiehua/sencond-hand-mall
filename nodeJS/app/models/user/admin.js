@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const {sequelize} = require('../../core/db')
+const {sequelize} = require('../../../core/db')
 const {Sequelize, Model} = require('sequelize')
 
 // 定义管理员模型
@@ -9,10 +9,15 @@ class Admin extends Model {
 
 // 初始用户模型
 Admin.init({
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     user_id: {
-        type: Sequelize.STRING(6),
-        primaryKey: true,
-        autoIncrement: true
+      type: Sequelize.STRING(6),
+      allowNull: false,
+      comment: '用户ID'
       },
       user_name: {
         type: Sequelize.STRING(15),
@@ -38,14 +43,15 @@ Admin.init({
         comment: '邮箱'
       },
       pass_word: {
-        type: Sequelize.STRING,
-        set(val) {
-          // 加密
-          const salt = bcrypt.genSaltSync(10);
-          // 生成加密密码
-          const psw = bcrypt.hashSync(val, salt);
-          this.setDataValue("password", psw);
-        },
+        type: Sequelize.STRING(15),
+        // set(val) {
+        //   // 加密
+        //   const salt = bcrypt.genSaltSync(10);
+        //   // 生成加密密码
+        //   const psw = bcrypt.hashSync(val, salt);
+        //   this.setDataValue("password", psw);
+        // },
+        unique: true,
         allowNull: false,
         comment: '管理员密码'
       },
@@ -58,8 +64,8 @@ Admin.init({
   }
 }, {
   sequelize,
-  modelName: 'admin',
-  tableName: 'admin'
+  modelName: 'userinfo',
+  tableName: 'userinfo'
 })
 
 

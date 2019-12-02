@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize')
-
 const {
   dbName,
   host,
@@ -42,7 +41,6 @@ const sequelize = new Sequelize(dbName, user, password, {
 sequelize.sync({
   force: false
 })
-
 module.exports = {
   sequelize
 }
