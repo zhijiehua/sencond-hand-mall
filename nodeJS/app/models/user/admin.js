@@ -14,11 +14,6 @@ Admin.init({
       primaryKey: true,
       autoIncrement: true
     },
-    user_id: {
-      type: Sequelize.STRING(6),
-      allowNull: false,
-      comment: '用户ID'
-      },
       user_name: {
         type: Sequelize.STRING(15),
         allowNull: false,

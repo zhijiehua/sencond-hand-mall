@@ -18,15 +18,16 @@ router.post('/auth',  async (ctx) => {
     msg = v.aa(ctx.request.body)
   } else {
     const admin = new Admin()
-    admin.id = 0
-    admin.user_id = '000000'
     admin.user_name = ctx.request.body.userName
     admin.name = ctx.request.body.name
     admin.email = ctx.request.body.email
     admin.phone_number = ctx.request.body.phoneNumber
-    console.log(admin.phone_number)
     admin.pass_word = ctx.request.body.passWord
-    console.log(admin.pass_word)
+    const now = new Date()
+    const year = now.getFullYear()
+    const mounth = now.getMonth() + 1
+    const day = now.getDate()
+    console.log(year + "-" + mounth + "-" + day)
     admin.created_time = '2019-12-02'
     admin.save()
     ctx.response.status = 200;
