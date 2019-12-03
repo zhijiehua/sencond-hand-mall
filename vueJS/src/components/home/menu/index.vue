@@ -2,30 +2,20 @@
   <div>
     <!-- 头部导航主题 -->
     <el-menu
-    :default-active="activeIndex2"
     class="el-menu-demo"
     mode="horizontal"
-    @select="handleSelect"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b">
-    <el-menu-item index="1">
-      <i class="loaction el-icon-location-outline" @click="openDraw">北京</i>
-    </el-menu-item>
-    <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-        <template slot="title">选项4</template>
-        <el-menu-item index="2-4-1">选项1</el-menu-item>
-        <el-menu-item index="2-4-2">选项2</el-menu-item>
-        <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-    </el-submenu>
-    <el-menu-item index="3" disabled>消息中心</el-menu-item>
-    <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+    <!-- 地址 -->
+      <el-menu-item index="1">
+        <i class="loaction el-icon-location-outline" @click="operationBtn('openDraw')">北京</i>
+      </el-menu-item>
+      <!-- 登录注册入口 或者展示个人信息 -->
+      <el-menu-item index="2">
+        <span v-if="!hasLogin" @click="operationBtn('userLogin')">登录/注册</span>
+        <span v-else>{{'您好' + name}}</span>
+      </el-menu-item>
     </el-menu>
     <!-- 抽屉 -->
     <el-drawer
@@ -35,28 +25,54 @@
       :with-header="false">
       <location-choose></location-choose>
     </el-drawer>
+    <!-- 登录弹框 -->
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      :before-close="operationBtn('closeDialog')"
+      width="30%">
+      <login></login>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import login from './login'
 import locationChoose from './locationChoose'
 export default {
   components: {
-    locationChoose
+    locationChoose,
+    login
   },
   data () {
     return {
       drawerDialog: false,
-      activeIndex: '1',
-      activeIndex2: '1'
+      hasLogin: false,
+      name: 'huahauahu',
+      dialogVisible: false
     }
   },
   methods: {
-    handleSelect (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    openDraw () { // 打开选择地址的抽屉
-      this.drawerDialog = true
+    /** openDraw 打开地址抽屉 */
+    /** userLogin 登录或注册弹框 */
+    /** closeDialog 关闭弹窗 */
+    operationBtn (type) {
+      switch (type) {
+        case 'userLogin':
+          alert(1)
+          this.dialogVisible = true
+          break
+        case 'openDraw':
+          this.drawerDialog = true
+          break
+        case 'closeDialog':
+          this.dialogVisible = false
+          break
+      }
     }
   }
 }
