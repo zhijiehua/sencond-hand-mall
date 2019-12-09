@@ -27,14 +27,13 @@
     </el-drawer>
     <!-- 登录弹框 -->
     <el-dialog
-      title="提示"
       :visible.sync="dialogVisible"
       :before-close="operationBtn('closeDialog')"
       width="30%">
       <login></login>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button @click="operationBtn('login')">登录</el-button>
+        <el-button type="primary" @click="operationBtn('create')">注册</el-button>
       </span>
     </el-dialog>
   </div>
@@ -63,14 +62,14 @@ export default {
     operationBtn (type) {
       switch (type) {
         case 'userLogin':
-          alert(1)
           this.dialogVisible = true
           break
         case 'openDraw':
           this.drawerDialog = true
           break
-        case 'closeDialog':
-          this.dialogVisible = false
+        case 'login':
+          break
+        case 'create':
           break
       }
     }
