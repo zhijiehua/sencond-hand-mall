@@ -6,8 +6,9 @@ import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
 import '../theme/index.css'
 import ElementUI from 'element-ui'
-Vue.use(ElementUI)
 
+import './config/ruleValidator'
+Vue.use(ElementUI)
 // swiper 轮播图
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 // Vue.use(VueAwesomeSwiper)

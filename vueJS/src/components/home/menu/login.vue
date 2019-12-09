@@ -6,22 +6,22 @@
         </el-tabs>
         <el-form label-width="100px" :rules="rules">
             <el-form-item size="small" prop="userName" label="用户名：">
-                <el-input v-model="dialogForm.userName"></el-input>
+                <el-input v-model="dialogForm.userName" placeholder="请输入用户名"></el-input>
             </el-form-item>
             <el-form-item size="small" prop="name" label="昵称：">
-                <el-input v-model="dialogForm.name"></el-input>
+                <el-input v-model="dialogForm.name" placeholder="请输入昵称"></el-input>
             </el-form-item>
             <el-form-item size="small" prop="email" label="邮箱：">
-                <el-input v-model="dialogForm.email"></el-input>
+                <el-input v-model="dialogForm.email" placeholder="请输入邮箱"></el-input>
             </el-form-item>
             <el-form-item size="small" prop="phoneNumber" label="电话号码：">
-                <el-input v-model="dialogForm.phoneNumber"></el-input>
+                <el-input v-model="dialogForm.phoneNumber" placeholder="请输入电话号码"></el-input>
             </el-form-item>
             <el-form-item size="small" prop="passWord" label="密码：">
-                <el-input v-model="dialogForm.passWord"></el-input>
+                <el-input v-model="dialogForm.passWord" placeholder="请输入密码"></el-input>
             </el-form-item>
             <el-form-item size="small" prop="otherPassWord" label="确认密码：">
-                <el-input v-model="dialogForm.otherPassWord"></el-input>
+                <el-input v-model="dialogForm.otherPassWord" placeholder="请再次输入密码"></el-input>
             </el-form-item>
             <el-form-item class="login-checked">
                 <el-checkbox v-model="checked" >记住我</el-checkbox>
@@ -47,14 +47,18 @@ export default {
       },
       checked: false,
       rules: {
-        userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }, {
-          min: 8, max: 15, message: '长度在 8 到 15 个字符', trigger: 'blur'
-        }],
-        name: [{ required: true, message: '请输入昵称', triger: 'blur' }],
-        phoneNumber: [{ required: true, type: 'phone', message: '请输入电话号码', triger: 'blur' }],
-        email: [{ required: true, type: 'email', message: '请输入邮箱', triger: 'blur' }],
-        passWord: [{ required: true, message: '请输入密码', triger: 'blur' }],
-        otherPassWord: [{ required: true, message: '请确认密码', triger: 'blur' }]
+        // eslint-disable-next-line no-undef
+        userName: $ruleValidator('请输入用户名呀呀呀'),
+        // eslint-disable-next-line no-undef
+        name: $ruleValidator('请输入昵称'),
+        // eslint-disable-next-line no-undef
+        phoneNumber: $ruleValidator('请输入电话号码', 'phone'),
+        // eslint-disable-next-line no-undef
+        email: $ruleValidator('请输入邮箱', 'email'),
+        // eslint-disable-next-line no-undef
+        passWord: $ruleValidator('请输入密码'),
+        // eslint-disable-next-line no-undef
+        otherPassWord: $ruleValidator('请确认密码')
       }
     }
   }
