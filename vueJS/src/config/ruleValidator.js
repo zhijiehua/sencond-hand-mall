@@ -1,6 +1,5 @@
 var $ruleValidator = (message = '请输入必填字段', type, required = true, trigger = ['blur', 'change']) => {
   let rules = [{ required: required, message: message, trigger: trigger }]
-  alert(type)
   switch (type) {
     // 校验密码
     case 'password':

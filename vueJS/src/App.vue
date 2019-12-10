@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style>
     @import './assets/css/base.css';
     @import './assets/css/public.scss';
     @import './assets/css/ui.scss';

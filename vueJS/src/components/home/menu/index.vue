@@ -29,12 +29,8 @@
     <el-dialog
       :visible.sync="dialogVisible"
       :before-close="operationBtn('closeDialog')"
-      width="30%">
+      width="25%">
       <login></login>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="operationBtn('login')">登录</el-button>
-        <el-button type="primary" @click="operationBtn('create')">注册</el-button>
-      </span>
     </el-dialog>
   </div>
 </template>
@@ -66,10 +62,6 @@ export default {
           break
         case 'openDraw':
           this.drawerDialog = true
-          break
-        case 'login':
-          break
-        case 'create':
           break
       }
     }
