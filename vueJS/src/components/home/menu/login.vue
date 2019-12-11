@@ -7,24 +7,24 @@
             <el-tab-pane label="登录" name="login">登录</el-tab-pane>
             <el-tab-pane label="注册" name="create">注册</el-tab-pane>
         </el-tabs>
-        <el-form label-width="100px" :rules="rules" class="form">
+        <el-form label-width="100px" :model="dialogForm" :rules="rules" class="form" ref="form">
             <el-form-item size="small" prop="userName">
-                <el-input v-model="dialogForm.userName" placeholder="请输入用户名"></el-input>
+                <el-input v-model="dialogForm.userName" placeholder="请输入用户名" clearable></el-input>
             </el-form-item>
             <el-form-item size="small" prop="name" v-if="type !== 'login'">
-                <el-input v-model="dialogForm.name" placeholder="请输入昵称"></el-input>
+                <el-input v-model="dialogForm.name" placeholder="请输入昵称" clearable></el-input>
             </el-form-item>
             <el-form-item size="small" prop="email" v-if="type !== 'login'">
-                <el-input v-model="dialogForm.email" placeholder="请输入邮箱"></el-input>
+                <el-input v-model="dialogForm.email" placeholder="请输入邮箱" clearable></el-input>
             </el-form-item>
             <el-form-item size="small" prop="phoneNumber" v-if="type !== 'login'">
-                <el-input v-model="dialogForm.phoneNumber" placeholder="请输入电话号码"></el-input>
+                <el-input v-model="dialogForm.phoneNumber" placeholder="请输入电话号码" clearable></el-input>
             </el-form-item>
             <el-form-item size="small" prop="passWord">
-                <el-input v-model="dialogForm.passWord" placeholder="请输入密码"></el-input>
+                <el-input v-model="dialogForm.passWord" placeholder="请输入密码" type="password" clearable></el-input>
             </el-form-item>
             <el-form-item size="small" prop="otherPassWord" v-if="type !== 'login'">
-                <el-input v-model="dialogForm.otherPassWord" placeholder="请再次输入密码"></el-input>
+                <el-input v-model="dialogForm.otherPassWord" placeholder="请再次输入密码" type="password" clearable></el-input>
             </el-form-item>
             <el-form-item class="login-checked" v-if="type == 'login'">
                 <el-checkbox v-model="checked" >记住我</el-checkbox>
@@ -72,12 +72,17 @@ export default {
   },
   methods: {
     submitForm (type) {
-        if ()
-      if (type === 'create') {
+      this.$refs['form'].validate((valid) => {
+        if (valid) {
+          if (type === 'create') { // 注册
+            createUser(this.dialogForm).then(res => {
+              console.log(res)
+            })
+          } else { // 登录
 
-      } else {
-
-      }
+          }
+        }
+      })
     }
   }
 }
