@@ -31,8 +31,8 @@
                 <router-link style="float:right;" :to="{name:'index',query:{id:'xxx',name:'xxx'}}">忘记密码？</router-link>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="submitForm('form')" v-if="type == 'login'">登录</el-button>
-                <el-button type="primary" @click="submitForm('form')" v-else>注册</el-button>
+                <el-button type="primary" @click="submitForm('login')" v-if="type == 'login'">登录</el-button>
+                <el-button type="primary" @click="submitForm('create')" v-else>注册</el-button>
             </el-form-item>
         </el-form>
         <div class="bottom"></div>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import {createUser} from '@/api/user/index'
 export default {
   data () {
     return {
@@ -55,7 +56,7 @@ export default {
       checked: false,
       rules: {
         // eslint-disable-next-line no-undef
-        userName: $ruleValidator('请输入用户名呀呀呀'),
+        userName: $ruleValidator('请输入用户名'),
         // eslint-disable-next-line no-undef
         name: $ruleValidator('请输入昵称'),
         // eslint-disable-next-line no-undef
@@ -66,6 +67,16 @@ export default {
         passWord: $ruleValidator('请输入密码'),
         // eslint-disable-next-line no-undef
         otherPassWord: $ruleValidator('请确认密码')
+      }
+    }
+  },
+  methods: {
+    submitForm (type) {
+        if ()
+      if (type === 'create') {
+
+      } else {
+
       }
     }
   }

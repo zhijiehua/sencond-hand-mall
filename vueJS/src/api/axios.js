@@ -2,8 +2,8 @@
 import axios from 'axios'
 import QS from 'qs'
 // import { Notification, Loading } from 'element-ui'
-import store from '@/store'
-import router from '../router'
+// import store from '@/store'
+// import router from '../router'
 // import { getStorage, getCookie, downLoad } from '@/config/easier'
 
 import NProgress from 'nprogress'
@@ -98,16 +98,16 @@ axios.interceptors.response.use(response => {
         })
 
         // 清除token
-        localStorage.removeItem('token')
-        store.commit('loginSuccess', null)
-        setTimeout(() => {
-          router.replace({
-            path: '/login',
-            query: {
-              redirect: router.currentRoute.fullPath
-            }
-          })
-        }, 1000)
+        // localStorage.removeItem('token')
+        // store.commit('loginSuccess', null)
+        // setTimeout(() => {
+        //   router.replace({
+        //     path: '/login',
+        //     query: {
+        //       redirect: router.currentRoute.fullPath
+        //     }
+        //   })
+        // }, 1000)
         break
       case 404:
         Notification.error({
