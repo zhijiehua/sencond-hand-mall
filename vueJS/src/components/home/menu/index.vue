@@ -9,7 +9,7 @@
     active-text-color="#ffd04b">
     <!-- 地址 -->
       <el-menu-item index="1">
-        <i class="loaction el-icon-location-outline" @click="operationBtn('openDraw')">北京</i>
+        <i class="loaction el-icon-location-outline" @click="operationBtn('openDraw')">{{$store.state.localCity}}</i>
       </el-menu-item>
       <!-- 登录注册入口 或者展示个人信息 -->
       <el-menu-item index="2">
